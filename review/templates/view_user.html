@@ -1,0 +1,46 @@
+{% include 'admin_navigation.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+    All Users
+</marquee>
+<hr>
+
+<div class="container-fluid">
+<table class="table table-hover " id="example">
+    <thead>
+    <tr style="background-color: lightgreen; color : black">
+        <th>S. No.</th>
+        <th>Full Name</th>
+        <th>Email ID</th>
+        <th>Contact</th>
+        <th>Gender</th>
+        <th>DOB</th>
+        <th>Address</th>
+        <th>Image</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody style="background-color:yellow; color: black">
+    {% for i in data %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+        <td>{{i.user.username}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.dob}}</td>
+        <td>{{i.address}}</td>
+        <td><img src="{{i.image.url}}" style="100px ; height : 100px ; border-radius:50%"></td>
+        <td><a href="{% url 'delete_user' i.user.id %}" class="btn btn-danger" onclick="return confirm('Are you Sure?')">Delete</a> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
+

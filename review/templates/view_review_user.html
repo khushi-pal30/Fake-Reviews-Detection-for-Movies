@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://kit.fontawesome.com/0da782d01f.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<title></title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+		font-family: 'Poppins',sans-serif;
+	}
+	body{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		background:#0a2b3c;
+	}
+	.container{
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding:30px;
+		border-radius: 10px;
+		box-shadow: -1px -1px 2px rgba(255,255,255,0.25), inset 2px 2px 2px rgba(255,255,255,0.25),8px 30px 30px rgba(0,0,0,0.4), inset -2px -2px 5px rgba(0,0,0,0.3);
+	}
+	.container h2{
+		margin-bottom: 10px;
+		font-weight: 500;
+		color:#1f9cff;
+	}
+	.container .skills{
+		display: flex;
+		float:left;
+		justify-content: center;
+		margin: 8px auto;
+		padding-right: 20px;
+		box-shadow: -1px -1px 2px rgba(255,255,255,0.25), inset 2px 2px 2px rgba(255,255,255,0.25),8px 30px 30px rgba(0,0,0,0.4), inset -2px -2px 5px rgba(0,0,0,0.3);
+	}
+	.container .skills h3{
+		min-width: 180px;
+		text-align: right;
+		padding-right: 20px;
+		color:#fff;
+		font-size: 20px;
+		font-weight: 400;
+		letter-spacing: 2px;
+	}
+	.container .skills .rating{
+		position: relative;
+		display: flex;
+		margin: 10px 0;
+		flex-direction: row-reverse;
+	}
+	.container .skills .rating input{
+		position: relative;
+		width: 20px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		appearance:none;
+		-webkit-appearance:none;
+		overflow: hidden;
+
+	}
+		.container .skills .rating input::before{
+				content:'\f005';
+				position: absolute;
+				font-family: fontAwesome;
+				font-size: 34px;
+				position: absolute;
+				left: 2px;
+				color: #030b0f;
+				transition: 0.5s;
+		}
+		.container .skills .rating input:nth-child(2n + 1)::before{
+			right: 2px;
+			left: initial;
+		}
+		.container .skills .rating input:hover ~ input::before,
+		.container .skills .rating input:hover::before,
+		.container .skills .rating input:checked ~ input::before,
+		.container .skills .rating input:checked::before{
+			color:#1f9cff;
+		}
+    span{
+        color:white;
+        display:inline;
+        }
+    .abc{
+        color:green;
+    }
+    .zz{color:white;}
+
+</style>
+
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+<div class="container">
+	<h2>Movie: {{data.movi_name}}</h2>
+	<div class="skills">
+
+		<div class="rating">
+            <img src="{{data.image.url}}" style="width:100%;height:200px;">
+		</div>
+	</div>
+    <div class="skills">
+    <div class="rating">
+                       {% if a == 1 %}
+              <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span><font style="color:white;font-size:20px;font-weight:bold;"> Movie Rating:</font>
+            {% endif %}
+            {% if a == 2 %}
+              <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span><font style="color:white;font-size:20px;font-weight:bold;"> Movie Rating:</font>
+            {% endif %}
+            {% if a == 3 %}
+              <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span><font style="color:white;font-size:20px;font-weight:bold;"> Movie Rating:</font>
+            {% endif %}
+            {% if a == 4 %}
+              <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp;&nbsp; <font style="color:white;font-size:20px;font-weight:bold;"> Movie Rating:</font>
+            {% endif %}
+            {% if a == 5 %}
+            <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span> &nbsp;&nbsp; <span style="color:gold;font-size:23px;"><i class="fas fa-star"></i></span><font style="color:white;font-size:20px;font-weight:bold;"> Movie Rating:</font>
+            {% endif %}
+		</div>
+		</div>
+    {% for i in data2 %}
+
+            <script>
+                var x={{i.rid}};
+                var y={{data.id}};
+                b=(x==y)?"True":"False";
+                 if(b=="True"){
+                                document.write(" <br><span class='abc skills'>{{i.remail}} : <font class='zz'>{{i.review}}</font></span>")
+                                }
+            </script>
+
+{% endfor %}
+    <div>
+         <a href="{% url 'view_movie_user' %}" class="btn btn-secondary">Close</a>
+    </div>
+
+</div>
+</div>
+
+</form>
+</body>
+</html>
+
+
+{% if error == "no" %}
+<script>
+    alert("Review Added Successfully")
+    window.location = ('{% url 'view_movie_user' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid Login Details, Try Agail.....")
+</script>
+{% endif %}

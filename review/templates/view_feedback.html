@@ -1,0 +1,72 @@
+{% include 'admin_navigation.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+     Feedback Detail
+</marquee>
+<hr>
+
+<div class="container-fluid">
+<table class="table table-hover " id="example">
+    <thead>
+    <tr style="background-color: lightgreen; color : black">
+        <th>S. No.</th>
+        <th>Full Name</th>
+        <th>Email ID</th>
+        <th>Contact</th>
+        <th>Feedback</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody style="background-color:lightblue; color: black">
+    {% for i in data %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.feedback_name}}</td>
+        <td>{{i.feedback_email}}</td>
+        <td>{{i.feedback_contact}}</td>
+        <td>{{i.feedback_comment}}</td>
+        <td><a href="{% url 'delete_feedback' i.id %}" class="btn btn-danger" onclick="return confirm('Are you Sure?')">Delete</a> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+     Contact Detail
+</marquee>
+<hr>
+
+<div class="container-fluid">
+<table class="table table-hover " id="example">
+    <thead>
+    <tr style="background-color: lightgreen; color : black">
+        <th>S. No.</th>
+        <th>Full Name</th>
+        <th>Email ID</th>
+        <th>Contact</th>
+        <th>Feedback</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody style="background-color:lightblue; color: black">
+    {% for i in data2 %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.con_name}}</td>
+        <td>{{i.con_email}}</td>
+        <td>{{i.con_mobile}}</td>
+        <td>{{i.con_purpose}}</td>
+        <td><a href="{% url 'delete_contact' i.id %}" class="btn btn-danger" onclick="return confirm('Are you Sure?')">Delete</a> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

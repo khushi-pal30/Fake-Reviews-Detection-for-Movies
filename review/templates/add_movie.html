@@ -1,0 +1,55 @@
+{% include 'admin_navigation.html' %}
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+    Add Movie
+</marquee>
+<hr>
+<form class="container mt-5" onsubmit="return checkpass();" name="signup" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-md-12" >
+            <label>Movie Name:</label>
+            <input type="text" class="form-control" name="mname" placeholder="Wright Movie Name Here..." required>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Actor Name:</label>
+            <input type="text" class="form-control" name="hname" placeholder="Name Of hero in Movie" required>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Actresses Name:</label>
+            <input type="text" class="form-control" name="hiname" placeholder="Name Of heroin in Movie" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Release Date:</label>
+            <input type="date" class="form-control" name="rdate" placeholder="Relies Date of Movie" required>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Movie Poster:</label>
+            <input type="file" class="form-control" name="poster" required>
+        </div>
+    </div>
+
+<input type="submit" value="Submit" class="btn btn-primary my-3" style="width:250px">
+</form>
+
+{% if error == "no" %}
+<script>
+    alert("Movie Added Successfully")
+    window.location = ('{% url 'view_movie_admin' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something Wrong, Try Again...")
+</script>
+{% endif %}
+

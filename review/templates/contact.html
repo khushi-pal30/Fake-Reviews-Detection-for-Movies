@@ -1,0 +1,47 @@
+
+
+{% include 'navigation.html' %}
+
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+        Contact Us
+</marquee>
+<hr>
+
+<form class="container mt-5" method="post">
+    {% csrf_token %}
+    <label><b>Full Name:</b></label>
+    <input type="text" class="form-control" name="cname" required="true">
+
+    <label><b>Phone Number:</b></label>
+    <input type="text" class="form-control" name="cphone" required="true">
+
+    <label><b>Email Address:</b></label>
+    <input type="email" class="form-control" name="cemail" required="true">
+
+    <label><b>Purpose:</b></label>
+    <input type="text" class="form-control" name="cpurpose" required="true">
+
+<center>
+    <input type="submit" class="btn btn-primary" style="margin-top:2%; color:darkcyan; background-color:black ; height:50px; font-size:25px">
+</center>
+</form>
+{% if error == "no" %}
+<script>
+    alert("Contact Detail Submitted Successfully")
+    window.location = ('{% url 'contact' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong, Try Again")
+</script>
+{% endif %}
+
+{% if error == "not" %}
+<script>
+    alert("Your Current Password is wrong")
+</script>
+{% endif %}
+

@@ -1,0 +1,56 @@
+{% load static %}
+
+{% include 'admin_navigation.html' %}
+
+<marquee behavior="alternate" style="font-family: 'Monotype Corsiva'; font-size:25px; color:darkcyan; background-color:black; font-weight:bold; margin-top:1%">
+    Edit Movie Detail
+</marquee>
+<hr>
+<form class="container mt-5" onsubmit="return checkpass();" name="signup" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-md-12" >
+            <label>Movie Name:</label>
+            <input type="text" class="form-control" name="roomno" value="{{data.movi_name}}" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Hero:</label>
+            <input type="text" class="form-control" name="hero" value="{{data.hero_name}}" required>
+        </div>
+        <div class="form-group col-md-6" >
+            <label>Heroin:</label>
+             <input type="text" class="form-control" name="heroin" value="{{data.heroin_name}}" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6" >
+            <label>Relies Date:</label>
+            <input type="date" class="form-control" name="rdate" value="{{data.rdate}}" required>
+        </div>
+        <div class="form-group col-md-3" >
+            <td><img src="{{data.image.url}}" style="100px ; height : 100px; width : 270px; border-radius:10%"></td>
+        </div>
+         <div class="form-group col-md-3" >
+             <td><a href="{% url 'change_poster' data.id %}"><br><br><font face="mv boli" size="5">Change Image</font></a></td>
+        </div>
+    </div>
+
+<input type="submit" value="Submit" class="btn btn-primary my-3" style="width:250px">
+</form>
+
+{% if error == "no" %}
+<script>
+    alert("Movie Detail Updated Successfully")
+    window.location = ('{% url 'view_movie_admin' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something Wrong, Try Again...")
+</script>
+{% endif %}

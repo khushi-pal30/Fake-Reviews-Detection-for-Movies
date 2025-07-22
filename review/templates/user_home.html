@@ -1,0 +1,22 @@
+{% load static %}
+{% include 'user_navigation.html' %}
+<style>
+    .main{
+    border:2px solid blue;
+    height:450px;
+    background-image:url({% static 'images/WhatsApp Image 2025-05-29 at 14.30.55_360af98a.jpg' %});
+    background-size:100% 100%;
+    animation: demo 20s infinite linear;
+    }
+    @keyframes demo{
+    20%{background-image:url({% static 'images/kesari2.jpg' %});}
+    40%{background-image:url({% static 'images/Sikandar-2-306x393.jpeg' %});}
+    60%{background-image:url({% static 'images/hq720.jpg' %});}
+    80%{background-image:url({% static 'images/Housefull-5-1-306x393.jpg' %});}
+    100%{background-image:url({% static 'images/BhoolChukMaaf-306x393.jpg' %});}
+    }
+</style>
+
+<div class="container-fluid main">
+
+</div>

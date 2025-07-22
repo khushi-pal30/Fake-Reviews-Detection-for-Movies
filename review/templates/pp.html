@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Chatbot</title>
+    <style>
+        .icon-btn { margin: 10px; padding: 10px; font-size: 16px; cursor: pointer; }
+        #chat-box { margin-top: 20px; font-family: Arial; }
+    </style>
+</head>
+<body>
+    <h1>Select Your Mood, Genre or Actor</h1>
+    <div>
+        <button class="icon-btn" onclick="sendMsg('I am sad')">Sad</button>
+        <button class="icon-btn" onclick="sendMsg('I am happy')">Happy</button>
+        <button class="icon-btn" onclick="sendMsg('comedy')">Comedy</button>
+        <button class="icon-btn" onclick="sendMsg('romantic')">Romantic</button>
+        <button class="icon-btn" onclick="sendMsg('actor Shah Rukh Khan')">Shah Rukh Khan</button>
+        <button class="icon-btn" onclick="sendMsg('trending movies')">Trending</button>
+    </div>
+    <div id="chat-box"></div>
+
+    <script>
+        function sendMsg(msg) {
+            fetch(/chatbot/?message=${encodeURIComponent(msg)})
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("chat-box").innerHTML = "<b>Suggestions:</b> " + data.response.join(", ");
+            });
+        }
+    </script>
+</body>
+</html>
